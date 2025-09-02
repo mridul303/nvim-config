@@ -33,6 +33,7 @@ return {
       end,
       formatters_by_ft = {
         lua = { "stylua" },
+        go = { "goimports", "gofumpt", "golines", stop_after_first = false },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -42,6 +43,17 @@ return {
       formatters = {
         stylua = {
           prepend_args = { "--indent-type", "Spaces", "--indent-width", "2" },
+        },
+        goimports = {
+          command = "goimports",
+        },
+        gofumpt = {
+          command = "gofumpt",
+          -- you can add args if you want stricter config
+        },
+        golines = {
+          command = "golines",
+          prepend_args = { "--max-len=120" }, -- adjust line length
         },
       },
     },
