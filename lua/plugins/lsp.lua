@@ -238,6 +238,12 @@ return {
             },
           },
         },
+        helm_ls = {
+          filetypes = { "helm" },
+          settings = {
+            ["helm-ls"] = {},
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed

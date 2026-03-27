@@ -7,6 +7,7 @@ require("config.wsl-clipboard")
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")
+require("config.filetypes")
 
 -- Finally load lazy.nvim
 require("config.lazy")
