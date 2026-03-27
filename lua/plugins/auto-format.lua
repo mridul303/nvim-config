@@ -33,7 +33,8 @@ return {
       end,
       formatters_by_ft = {
         lua = { "stylua" },
-        go = { "goimports", "gofumpt", "golines", stop_after_first = false },
+        go = { "goimports", "gofumpt", stop_after_first = false },
+        python = { "ruff_format" },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -51,10 +52,21 @@ return {
           command = "gofumpt",
           -- you can add args if you want stricter config
         },
-        golines = {
-          command = "golines",
-          prepend_args = { "--max-len=120" }, -- adjust line length
+        ruff_format = {
+          command = "ruff",
+          args = {
+            "format",
+            "--config",
+            "lint.isort.required-imports=[]", -- Don't organize imports
+            "--stdin-filename",
+            "$FILENAME",
+            "-",
+          },
         },
+        -- golines = {
+        --   command = "golines",
+        --   prepend_args = { "--max-len=120" }, -- adjust line length
+        -- },
       },
     },
   },
